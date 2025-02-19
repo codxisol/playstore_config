@@ -1,0 +1,20 @@
+
+
+keytool -list -v -keystore "C:\Users\Ali Hamza\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+
+C:\Users\HP\.jdks\corretto-17.0.13\bin>keytool -list -v -keystore "C:\Users\HP\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+Alias name: androiddebugkey
+Creation date: Oct 30, 2024
+Entry type: PrivateKeyEntry
+Certificate chain length: 1
+Certificate[1]:
+Owner: C=US, O=Android, CN=Android Debug
+Issuer: C=US, O=Android, CN=Android Debug
+Serial number: 1
+Valid from: Wed Oct 30 11:05:38 PKT 2024 until: Fri Oct 23 11:05:38 PKT 2054
+Certificate fingerprints:
+         SHA1: AC:9B:69:54:8D:F7:58:6D:45:44:FC:07:82:D1:19:6A:9F:D3:6F:6F
+         SHA256: B9:B3:78:C5:AD:F3:CC:F3:47:D6:E8:5B:4B:2C:87:21:4D:6F:D5:C6:4F:AC:51:CE:0F:EA:26:23:E1:AB:3B:CC
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 1
