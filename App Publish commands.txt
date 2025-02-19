@@ -1,0 +1,57 @@
+///First Run this command in terminal
+
+keytool -genkey -v -keystore upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+
+///After setting password and giving details enter y
+
+///go in android folder and make a new file key.properties and paste this and enter the password you enter
+
+
+storePassword=<Enter pasword>
+keyPassword=<Enter pasword>
+keyAlias=upload
+storeFile=../../upload-keystore.jks
+
+//After this in app/build file
+
+replace buildTypes{} block with beloow
+
+
+signingConfigs {
+       release {
+           keyAlias keystoreProperties['keyAlias']
+           keyPassword keystoreProperties['keyPassword']
+           storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+           storePassword keystoreProperties['storePassword']
+       }
+   }
+   buildTypes {
+       release {
+           signingConfig signingConfigs.release
+       }
+   }
+
+
+and add this in app/build 
+where android tag is start above that enter this 
+
+
+def keystoreProperties = new Properties()
+   def keystorePropertiesFile = rootProject.file('key.properties')
+   if (keystorePropertiesFile.exists()) {
+       keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+   }
+
+
+then in android manifest
+add permissions
+
+<uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>
+
+In first line add this ( xmlns:tools="http://schemas.android.com/tools" )
+
+Like this
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+
+
+done now go on build btn in android studio press flutter and then selecr build app bundle same apk file will be generated in bundles path is provided
